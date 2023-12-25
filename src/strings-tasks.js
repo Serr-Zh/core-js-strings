@@ -384,8 +384,16 @@ function isPalindrome(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  // const re = /(?:,| )+/;
+  const splitStr = sentence.split(' ');
+  let longest = '';
+  for (let i = 0; i < splitStr.length; i += 1) {
+    if (splitStr[i].length > longest.length) {
+      longest = splitStr[i];
+    }
+  }
+  return longest;
 }
 
 /**
@@ -399,8 +407,15 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-  str.split(' ');
-  return str[0];
+  const splitStr = str.split(' ');
+  let newStr = '';
+  for (let i = 0; i < splitStr.length; i += 1) {
+    newStr += reverseString(splitStr[i]);
+    if (i !== splitStr.length - 1) {
+      newStr += ' ';
+    }
+  }
+  return newStr;
 }
 
 /**
@@ -414,8 +429,19 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const splitStr = str.split('');
+  let newStr = '';
+  for (let i = 0; i < splitStr.length; i += 1) {
+    if (splitStr[i] >= 'A' && splitStr[i] <= 'Z') {
+      newStr += str[i].toLowerCase();
+    } else if (splitStr[i] >= 'a' && splitStr[i] <= 'z') {
+      newStr += str[i].toUpperCase();
+    } else {
+      newStr += str[i];
+    }
+  }
+  return newStr;
 }
 
 /**
@@ -431,8 +457,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -460,8 +486,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.substring(1, str.length - 1);
 }
 
 /**
@@ -479,8 +505,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
